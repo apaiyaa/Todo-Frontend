@@ -11,7 +11,7 @@
 <body>
     
     <header>
-        <h1>Task List</h1>
+        <h1>Todo List</h1>
         <form id="new-task-form">
             <input type="text" id="new-task-input" placeholder="What's your plan?">
             <input type="submit" value="+ add" id="new-task-submit">
@@ -20,15 +20,17 @@
 
     <main>
         <section class="task-list">
-            <h2>Tasks</h2>
+            <h2 id="no-task">Yeay! There is no tasks :D</h2>
 
             <div id="tasks">
 
+                
                 <!-- <div class="task">
                     <div class="content">
                         <input type="text" class="text" value="Task xyz" readonly>
                     </div>
                     <div class="actions">
+                        <button class="check">Check</button>
                         <button class="edit">Edit</button>
                         <button class="delete">Delete</button>
                     </div>

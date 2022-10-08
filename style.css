@@ -60,7 +60,7 @@ input, button {
 
 #new-task-submit {
     color: var(--light);
-    background-color: var(--blue);
+    background-color: var(--dark);
     font-size: 1.25rem;
     font-weight: 700;
     border-radius: 10px;
@@ -118,6 +118,7 @@ main {
     transition: 0.4s;
 }
 
+
 #tasks .task .content .text:not(:read-only){
     color: #2c78ba;
 }
@@ -130,10 +131,11 @@ main {
 .task .actions button {
     cursor: pointer;
     margin: 0 0.5rem;
-    font-size: 1rem;
+    font-size: 0.7rem;
     font-weight: 700;
     text-transform: uppercase;
     transition: 0.4s;
+    color: var(--grey);
 }
 
 .task .actions button:hover {
@@ -152,3 +154,9 @@ main {
 .task .action .delete {
     color: var(--light);
 }
+
+.strike {
+    text-decoration: line-through;
+    opacity: 0.4;
+}
+
