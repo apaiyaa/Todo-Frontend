@@ -1,17 +1,19 @@
 window.addEventListener('load', () => {
     const form = document.querySelector('#new-task-form');
     const input = document.querySelector('#new-task-input');
-    const list_el =  document.querySelector('#tasks')
+    const list_el =  document.querySelector('#tasks');
 
     form.addEventListener('submit', (e) => {
         e.preventDefault();
 
+        document.getElementById("no-task").innerHTML = "You've got things to do!";
+
         const task = input.value;
     
-        // if (!task) {
-        //     alert("Please fill out the task");
-        //     return;
-        // } 
+        if (!task) {
+            alert("Please fill out your plan.");
+            return;
+        } 
 
         const task_el = document.createElement("div");
         task_el.classList.add("task");
@@ -32,6 +34,10 @@ window.addEventListener('load', () => {
         const task_actions_el = document.createElement("div");
         task_actions_el.classList.add("actions");
 
+        const task_check_el = document.createElement("button");
+        task_check_el.classList.add("check");
+        task_check_el.innerText = "Check";
+
         const task_edit_el = document.createElement("button");
         task_edit_el.classList.add("edit");
         task_edit_el.innerText = "Edit";
@@ -40,6 +46,7 @@ window.addEventListener('load', () => {
         task_delete_el.classList.add("delete");
         task_delete_el.innerText = "Delete";
 
+        task_actions_el.appendChild(task_check_el);
         task_actions_el.appendChild(task_edit_el);
         task_actions_el.appendChild(task_delete_el);
 
@@ -48,6 +55,16 @@ window.addEventListener('load', () => {
         list_el.appendChild(task_el);
 
         input.value = "";
+
+        task_check_el.addEventListener('click', () => {
+            if(task_check_el.innerText.toLowerCase() == "check") {
+                task_input_el.classList.add("strike");
+                task_check_el.innerText = "Uncheck";
+            } else {
+                task_input_el.classList.remove("strike");
+                task_check_el.innerText = "Check";
+            }
+        });
 
         task_edit_el.addEventListener('click', () => {
             if(task_edit_el.innerText.toLowerCase() == "edit") {
@@ -61,7 +78,12 @@ window.addEventListener('load', () => {
         });
 
         task_delete_el.addEventListener('click', () => {
+            if(list_el.childElementCount == 1) {
+                document.getElementById("no-task").innerHTML = "Yeay! There is no tasks :D";
+            }
             list_el.removeChild(task_el);
+            
+            
         });
     })
 })
